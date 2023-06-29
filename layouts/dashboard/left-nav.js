@@ -32,7 +32,7 @@ export const LeftNav = (props) => {
 	const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
 
 	const handleCloseLeftNav = () => setLeftNav(dispatch, false);
-	console.log("leftNav", leftNav);
+	// console.log("leftNav", leftNav);
 
 	const content = (
 		// <Scrollbar
@@ -72,13 +72,15 @@ export const LeftNav = (props) => {
 					>
 						<Logo />
 					</Box>
-					<SvgIcon
-						fontSize="medium"
-						sx={{ color: "neutral.100" }}
-						onClick={handleCloseLeftNav}
-					>
-						<XMarkIcon />
-					</SvgIcon>
+					{!lgUp && (
+						<SvgIcon
+							fontSize="medium"
+							sx={{ color: "neutral.100" }}
+							onClick={handleCloseLeftNav}
+						>
+							<XMarkIcon />
+						</SvgIcon>
+					)}
 				</Box>
 				<Box
 					sx={{
@@ -127,7 +129,7 @@ export const LeftNav = (props) => {
 						const active = item.path
 							? pathname === item.path
 							: false;
-						console.log("item", item);
+						// console.log("item", item);
 						return (
 							<LeftNavItem
 								active={active}
@@ -192,7 +194,8 @@ export const LeftNav = (props) => {
 		return (
 			<Drawer
 				anchor="left"
-				open
+				open={leftNav}
+				onClose={onClose}
 				PaperProps={{
 					sx: {
 						backgroundColor: "neutral.800",
