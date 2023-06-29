@@ -1,9 +1,12 @@
+"use client";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import PropTypes from "prop-types";
 import ArrowTopRightOnSquareIcon from "@heroicons/react/24/solid/ArrowTopRightOnSquareIcon";
 import ArrowLeftOnRectangleIcon from "@heroicons/react/24/solid/ArrowLeftOnRectangleIcon";
 import ChevronUpDownIcon from "@heroicons/react/24/solid/ChevronUpDownIcon";
+import XMarkIcon from "@heroicons/react/24/solid/XMarkIcon";
+import Icon from "@mui/material/Icon";
 import {
 	Box,
 	Button,
@@ -18,11 +21,18 @@ import { Logo } from "@/components/Logo";
 import { Scrollbar } from "@/components/Scrollbar";
 import { items } from "./config";
 import { LeftNavItem } from "./left-nav-item";
+import { setLeftNav, useMaterialUIController } from "@/contexts";
 
 export const LeftNav = (props) => {
 	const { open, onClose } = props;
+	const [controller, dispatch] = useMaterialUIController();
+	const { leftNav } = controller;
+	console.log("controller", controller);
 	const pathname = usePathname();
 	const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
+
+	const handleCloseLeftNav = () => setLeftNav(dispatch, false);
+	console.log("leftNav", leftNav);
 
 	const content = (
 		// <Scrollbar
@@ -47,15 +57,28 @@ export const LeftNav = (props) => {
 		>
 			<Box sx={{ p: 3 }}>
 				<Box
-					component={NextLink}
-					href="/"
-					sx={{
-						display: "inline-flex",
-						height: 32,
-						width: 32,
-					}}
+					display="flex"
+					justifyContent="space-between"
+					// alignItems="baseline"
 				>
-					<Logo />
+					<Box
+						component={NextLink}
+						href="/"
+						sx={{
+							display: "inline-flex",
+							height: 32,
+							width: 32,
+						}}
+					>
+						<Logo />
+					</Box>
+					<SvgIcon
+						fontSize="medium"
+						sx={{ color: "neutral.100" }}
+						onClick={handleCloseLeftNav}
+					>
+						<XMarkIcon />
+					</SvgIcon>
 				</Box>
 				<Box
 					sx={{
@@ -104,7 +127,7 @@ export const LeftNav = (props) => {
 						const active = item.path
 							? pathname === item.path
 							: false;
-
+						console.log("item", item);
 						return (
 							<LeftNavItem
 								active={active}
@@ -153,7 +176,7 @@ export const LeftNav = (props) => {
 						</SvgIcon>
 					}
 					fullWidth
-					href="https://material-kit-pro-react.devias.io/"
+					// href="https://material-kit-pro-react.devias.io/"
 					sx={{ mt: 2 }}
 					target="_blank"
 					variant="contained"
@@ -187,8 +210,8 @@ export const LeftNav = (props) => {
 	return (
 		<Drawer
 			anchor="left"
+			open={leftNav}
 			onClose={onClose}
-			open={open}
 			PaperProps={{
 				sx: {
 					backgroundColor: "neutral.800",

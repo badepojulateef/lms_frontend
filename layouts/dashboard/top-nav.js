@@ -16,12 +16,17 @@ import {
 import { alpha } from "@mui/material/styles";
 import { usePopover } from "@/hooks/use-popover";
 import { AccountPopover } from "./account-popover";
+import { setLeftNav, useMaterialUIController } from "@/contexts";
 
 const SIDE_NAV_WIDTH = 280;
 const TOP_NAV_HEIGHT = 64;
 
 export const TopNav = (props) => {
-	const { onNavOpen } = props;
+	// const { onLeftNavOpen } = props;
+	const [controller, dispatch] = useMaterialUIController();
+	const { leftNav } = controller;
+	const handleCloseLeftNav = () => setLeftNav(dispatch, false);
+	const handleOpenLeftNav = () => setLeftNav(dispatch, true);
 	const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
 	const accountPopover = usePopover();
 
@@ -56,8 +61,11 @@ export const TopNav = (props) => {
 				>
 					<Stack alignItems="center" direction="row" spacing={2}>
 						{!lgUp && (
-							<IconButton onClick={onNavOpen}>
-								<SvgIcon fontSize="small">
+							<IconButton onClick={handleOpenLeftNav}>
+								<SvgIcon
+									fontSize="small"
+									// onClick={onLeftNavOpen}
+								>
 									<Bars3Icon />
 								</SvgIcon>
 							</IconButton>
@@ -113,6 +121,6 @@ export const TopNav = (props) => {
 	);
 };
 
-TopNav.propTypes = {
-	onNavOpen: PropTypes.func,
-};
+// TopNav.propTypes = {
+// 	onNavOpen: PropTypes.func,
+// };

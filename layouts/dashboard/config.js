@@ -11,7 +11,7 @@ import { SvgIcon } from "@mui/material";
 export const items = [
 	{
 		title: "Dashboard",
-		path: "/",
+		path: "/home",
 		icon: (
 			<SvgIcon fontSize="small">
 				<ChartBarIcon />
@@ -29,7 +29,7 @@ export const items = [
 	},
 	{
 		title: "Leave",
-		path: "/leave",
+		path: "/Leave",
 		icon: (
 			<SvgIcon fontSize="small">
 				<ShoppingBagIcon />
@@ -38,7 +38,7 @@ export const items = [
 	},
 	{
 		title: "Profile",
-		path: "/profile",
+		path: "/Profile",
 		icon: (
 			<SvgIcon fontSize="small">
 				<UserIcon />
@@ -47,7 +47,7 @@ export const items = [
 	},
 	{
 		title: "Settings",
-		path: "/settings",
+		path: "/Settings",
 		icon: (
 			<SvgIcon fontSize="small">
 				<CogIcon />
@@ -83,7 +83,7 @@ export const items = [
 	// },
 	{
 		title: "Performance",
-		path: "/",
+		path: "/Performance",
 		icon: (
 			<SvgIcon fontSize="small">
 				<ChartBarIcon />
@@ -92,7 +92,7 @@ export const items = [
 	},
 	{
 		title: "Training",
-		path: "/",
+		path: "/Training",
 		icon: (
 			<SvgIcon fontSize="small">
 				<ChartBarIcon />
@@ -101,7 +101,7 @@ export const items = [
 	},
 	{
 		title: "Promotion",
-		path: "/",
+		path: "/Promotion",
 		icon: (
 			<SvgIcon fontSize="small">
 				<ChartBarIcon />
@@ -110,7 +110,7 @@ export const items = [
 	},
 	{
 		title: "Resignation",
-		path: "/",
+		path: "/Resignation",
 		icon: (
 			<SvgIcon fontSize="small">
 				<ChartBarIcon />
@@ -119,7 +119,7 @@ export const items = [
 	},
 	{
 		title: "Termination",
-		path: "/employees",
+		path: "/Termination",
 		icon: (
 			<SvgIcon fontSize="small">
 				<UsersIcon />
