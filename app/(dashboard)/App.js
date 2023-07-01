@@ -53,7 +53,7 @@ const AppLayer = ({ children }) => {
 	return (
 		<ThemeProvider theme={theme}>
 			<TopNav onLeftNavOpen={() => setLeftNav(true)} />
-			<LeftNav onClose={handleCloseLeftNav} open={LeftNav} />
+			<LeftNav onClose={handleCloseLeftNav} />
 			<LayoutRoot>
 				<LayoutContainer>{children}</LayoutContainer>
 			</LayoutRoot>

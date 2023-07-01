@@ -24,15 +24,16 @@ import { LeftNavItem } from "./left-nav-item";
 import { setLeftNav, useMaterialUIController } from "@/contexts";
 
 export const LeftNav = (props) => {
-	const { open, onClose } = props;
+	const { onClose } = props;
 	const [controller, dispatch] = useMaterialUIController();
 	const { leftNav } = controller;
-	console.log("controller", controller);
+	// console.log("controller", controller);
 	const pathname = usePathname();
 	const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
 
 	const handleCloseLeftNav = () => setLeftNav(dispatch, false);
-	// console.log("leftNav", leftNav);
+	console.log("leftNav", typeof leftNav);
+	// console.log("open", typeof open);
 
 	const content = (
 		// <Scrollbar
@@ -194,7 +195,7 @@ export const LeftNav = (props) => {
 		return (
 			<Drawer
 				anchor="left"
-				open={leftNav}
+				// open={leftNav}
 				onClose={onClose}
 				PaperProps={{
 					sx: {
@@ -213,7 +214,7 @@ export const LeftNav = (props) => {
 	return (
 		<Drawer
 			anchor="left"
-			open={leftNav}
+			// open={leftNav}
 			onClose={onClose}
 			PaperProps={{
 				sx: {
