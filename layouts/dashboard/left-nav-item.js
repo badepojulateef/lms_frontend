@@ -21,6 +21,7 @@ export const LeftNavItem = (props) => {
 	return (
 		<li key={title}>
 			<ButtonBase
+				disableRipple={true}
 				sx={{
 					alignItems: "center",
 					borderRadius: 1,
@@ -32,6 +33,7 @@ export const LeftNavItem = (props) => {
 					textAlign: "left",
 					width: "100%",
 					...(active && {
+						// backgroundColor: "rgba(255, 255, 255, 0.04)",
 						backgroundColor: "rgba(255, 255, 255, 0.04)",
 					}),
 					"&:hover": {
@@ -50,7 +52,7 @@ export const LeftNavItem = (props) => {
 							justifyContent: "center",
 							mr: 2,
 							...(active && {
-								color: "primary.main",
+								color: "#bb4743",
 							}),
 						}}
 					>

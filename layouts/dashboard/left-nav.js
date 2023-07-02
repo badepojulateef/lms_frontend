@@ -1,5 +1,5 @@
 "use client";
-import NextLink from "next/link";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import PropTypes from "prop-types";
 import ArrowTopRightOnSquareIcon from "@heroicons/react/24/solid/ArrowTopRightOnSquareIcon";
@@ -22,6 +22,7 @@ import { Scrollbar } from "@/components/Scrollbar";
 import { items } from "./config";
 import { LeftNavItem } from "./left-nav-item";
 import { setLeftNav, useMaterialUIController } from "@/contexts";
+import Image from "next/image";
 
 export const LeftNav = (props) => {
 	const { onClose } = props;
@@ -36,129 +37,133 @@ export const LeftNav = (props) => {
 	// console.log("open", typeof open);
 
 	const content = (
-		// <Scrollbar
-		// 	sx={{
-		// 		// height: "40vw",
-		// 		maxHeight: "20vw",
-		// 		"& .simplebar-content": {
-		// 			height: "100%",
-		// 			// maxHeight: "100%",
-		// 		},
-		// 		"& .simplebar-scrollbar:before": {
-		// 			background: "neutral.400",
-		// 		},
-		// 	}}
-		// >
-		<Box
+		<Scrollbar
 			sx={{
-				display: "flex",
-				flexDirection: "column",
 				height: "100%",
+				"& .simplebar-content": {
+					height: "100%",
+				},
+				"& .simplebar-scrollbar:before": {
+					background: "neutral.400",
+				},
 			}}
 		>
-			<Box sx={{ p: 3 }}>
-				<Box
-					display="flex"
-					justifyContent="space-between"
-					// alignItems="baseline"
-				>
+			<Box
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					height: "100%",
+				}}
+			>
+				<Box sx={{ p: 3 }}>
 					<Box
-						component={NextLink}
-						href="/"
+						display="flex"
+						justifyContent="space-between"
+						// alignItems="baseline"
+					>
+						<Box
+							component={Link}
+							href="/home"
+							sx={{
+								display: "inline-flex",
+								// height: 32,
+								width: 200,
+							}}
+						>
+							{/* <Logo /> */}
+							<Image
+								src="/assets/Air-Peace-Logo.svg"
+								width="250"
+								height="200"
+							/>
+						</Box>
+						{!lgUp && (
+							<SvgIcon
+								fontSize="medium"
+								sx={{ color: "neutral.100" }}
+								onClick={handleCloseLeftNav}
+							>
+								<XMarkIcon />
+							</SvgIcon>
+						)}
+					</Box>
+					<Box
 						sx={{
-							display: "inline-flex",
-							height: 32,
-							width: 32,
+							alignItems: "center",
+							// backgroundColor: "rgba(255, 255, 255, 0.04)",
+							backgroundColor: "#bb4743",
+							borderRadius: 1,
+							cursor: "pointer",
+							display: "flex",
+							justifyContent: "space-between",
+							mt: 2,
+							p: "12px",
 						}}
 					>
-						<Logo />
+						<div>
+							<Typography color="inherit" variant="h3">
+								Adeleke
+							</Typography>
+							<Typography color="inherit" variant="h4">
+								Gbolahan
+							</Typography>
+						</div>
+						{/* <SvgIcon fontSize="small" sx={{ color: "neutral.500" }}>
+							<ChevronUpDownIcon />
+						</SvgIcon> */}
 					</Box>
-					{!lgUp && (
-						<SvgIcon
-							fontSize="medium"
-							sx={{ color: "neutral.100" }}
-							onClick={handleCloseLeftNav}
-						>
-							<XMarkIcon />
-						</SvgIcon>
-					)}
 				</Box>
+				<Divider sx={{ borderColor: "neutral.700" }} />
+				<Box
+					component="nav"
+					sx={{
+						flexGrow: 1,
+						px: 2,
+						py: 3,
+					}}
+				>
+					<Stack
+						component="ul"
+						spacing={0.5}
+						sx={{
+							listStyle: "none",
+							p: 0,
+							m: 0,
+						}}
+					>
+						{items.map((item) => {
+							const active = item.path
+								? pathname === item.path
+								: false;
+							// console.log("item", item);
+							return (
+								<LeftNavItem
+									active={active}
+									disabled={item.disabled}
+									external={item.external}
+									icon={item.icon}
+									key={item.title}
+									path={item.path}
+									title={item.title}
+								/>
+							);
+						})}
+					</Stack>
+				</Box>
+				<Divider sx={{ borderColor: "neutral.700" }} />
 				<Box
 					sx={{
-						alignItems: "center",
-						backgroundColor: "rgba(255, 255, 255, 0.04)",
-						borderRadius: 1,
-						cursor: "pointer",
-						display: "flex",
-						justifyContent: "space-between",
-						mt: 2,
-						p: "12px",
+						px: 2,
+						py: 3,
 					}}
 				>
-					<div>
-						<Typography color="inherit" variant="h3">
-							Adeleke
-						</Typography>
-						<Typography color="neutral.400" variant="h4">
-							Gbolahan
-						</Typography>
-					</div>
-					<SvgIcon fontSize="small" sx={{ color: "neutral.500" }}>
-						<ChevronUpDownIcon />
-					</SvgIcon>
-				</Box>
-			</Box>
-			<Divider sx={{ borderColor: "neutral.700" }} />
-			<Box
-				component="nav"
-				sx={{
-					flexGrow: 1,
-					px: 2,
-					py: 3,
-				}}
-			>
-				<Stack
-					component="ul"
-					spacing={0.5}
-					sx={{
-						listStyle: "none",
-						p: 0,
-						m: 0,
-					}}
-				>
-					{items.map((item) => {
-						const active = item.path
-							? pathname === item.path
-							: false;
-						// console.log("item", item);
-						return (
-							<LeftNavItem
-								active={active}
-								disabled={item.disabled}
-								external={item.external}
-								icon={item.icon}
-								key={item.title}
-								path={item.path}
-								title={item.title}
-							/>
-						);
-					})}
-				</Stack>
-			</Box>
-			<Divider sx={{ borderColor: "neutral.700" }} />
-			<Box
-				sx={{
-					px: 2,
-					py: 3,
-				}}
-			>
-				{/* <Typography color="neutral.100" variant="subtitle2">
+					{/* <Typography color="neutral.100" variant="subtitle2">
 						Need more features?
 					</Typography> */}
-				{/* <Typography color="neutral.500" variant="body2">
+					{/* <Typography color="neutral.500" variant="body2">
 						Check out our Pro solution template.
 					</Typography> */}
-				{/* <Box
+					{/* <Box
 						sx={{
 							display: "flex",
 							mt: 2,
@@ -171,24 +176,24 @@ export const LeftNav = (props) => {
 					>
 						<img alt="Go to pro" src="/assets/devias-kit-pro.png" />
 					</Box> */}
-				<Button
-					component="a"
-					endIcon={
-						<SvgIcon fontSize="small">
-							<ArrowLeftOnRectangleIcon />
-						</SvgIcon>
-					}
-					fullWidth
-					// href="https://material-kit-pro-react.devias.io/"
-					sx={{ mt: 2 }}
-					target="_blank"
-					variant="contained"
-				>
-					Log out
-				</Button>
+					<Button
+						component="a"
+						endIcon={
+							<SvgIcon fontSize="small">
+								<ArrowLeftOnRectangleIcon />
+							</SvgIcon>
+						}
+						fullWidth
+						href="https://material-kit-pro-react.devias.io/"
+						sx={{ mt: 2, backgroundColor: "#bb4743" }}
+						target="_blank"
+						variant="contained"
+					>
+						Log out
+					</Button>
+				</Box>
 			</Box>
-		</Box>
-		// </Scrollbar>
+		</Scrollbar>
 	);
 
 	if (lgUp) {
@@ -199,7 +204,7 @@ export const LeftNav = (props) => {
 				onClose={onClose}
 				PaperProps={{
 					sx: {
-						backgroundColor: "neutral.800",
+						backgroundColor: "#04315A",
 						color: "common.white",
 						width: 280,
 					},
@@ -214,7 +219,7 @@ export const LeftNav = (props) => {
 	return (
 		<Drawer
 			anchor="left"
-			// open={leftNav}
+			open={leftNav}
 			onClose={onClose}
 			PaperProps={{
 				sx: {

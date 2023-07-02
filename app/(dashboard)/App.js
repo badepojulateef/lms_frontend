@@ -17,6 +17,9 @@ const LayoutRoot = styled("div")(({ theme }) => ({
 	display: "flex",
 	flex: "1 1 auto",
 	maxWidth: "100%",
+	// height: "100%",
+	minHeight: "100%",
+	backgroundColor: "#f5f6fa",
 	[theme.breakpoints.up("lg")]: {
 		paddingLeft: SIDE_NAV_WIDTH,
 	},
@@ -27,6 +30,7 @@ const LayoutContainer = styled("div")({
 	flex: "1 1 auto",
 	flexDirection: "column",
 	width: "100%",
+	height: "100%",
 });
 
 const theme = createTheme();
@@ -51,6 +55,7 @@ const AppLayer = ({ children }) => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[pathname]
 	);
+	console.log("theme", theme);
 	return (
 		<ThemeProvider theme={theme}>
 			<ClientOnly>

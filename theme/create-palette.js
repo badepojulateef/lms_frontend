@@ -14,7 +14,8 @@ export function createPalette() {
 		},
 		background: {
 			default: common.white,
-			paper: common.white,
+			default: "#f9fafc !important",
+			// paper: "#bb4743",
 		},
 		divider: "#F2F4F7",
 		error,
