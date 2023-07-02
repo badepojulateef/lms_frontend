@@ -181,11 +181,11 @@ const useEmployeeIds = (employees) => {
 };
 
 export default async function Page() {
-	console.log("hhhhhiiiiiiiii from employees  page");
+	// console.log("hhhhhiiiiiiiii from employees  page");
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const employees = useEmployees(page, rowsPerPage);
-	console.log("employees", employees);
+	// console.log("employees", employees);
 	const employeesIds = useEmployeeIds(employees);
 	const employeesSelection = useSelection(employeesIds);
 

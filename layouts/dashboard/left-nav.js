@@ -32,7 +32,7 @@ export const LeftNav = (props) => {
 	const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
 
 	const handleCloseLeftNav = () => setLeftNav(dispatch, false);
-	console.log("leftNav", typeof leftNav);
+	// console.log("leftNav", typeof leftNav);
 	// console.log("open", typeof open);
 
 	const content = (
@@ -195,7 +195,7 @@ export const LeftNav = (props) => {
 		return (
 			<Drawer
 				anchor="left"
-				// open={leftNav}
+				open={leftNav}
 				onClose={onClose}
 				PaperProps={{
 					sx: {

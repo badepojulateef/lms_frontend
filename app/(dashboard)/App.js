@@ -9,6 +9,7 @@ import { LeftNav } from "@/layouts/dashboard/left-nav";
 import { TopNav } from "@/layouts/dashboard/top-nav";
 
 import { createTheme } from "../../theme";
+import ClientOnly from "@/components/client-only";
 
 const SIDE_NAV_WIDTH = 300;
 
@@ -52,8 +53,10 @@ const AppLayer = ({ children }) => {
 	);
 	return (
 		<ThemeProvider theme={theme}>
-			<TopNav onLeftNavOpen={() => setLeftNav(true)} />
-			<LeftNav onClose={handleCloseLeftNav} />
+			<ClientOnly>
+				<TopNav onLeftNavOpen={() => setLeftNav(true)} />
+				<LeftNav onClose={handleCloseLeftNav} />
+			</ClientOnly>
 			<LayoutRoot>
 				<LayoutContainer>{children}</LayoutContainer>
 			</LayoutRoot>

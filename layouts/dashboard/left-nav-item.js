@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import Link from "next/link";
 import PropTypes from "prop-types";
 import { Box, ButtonBase } from "@mui/material";
 
@@ -8,18 +8,18 @@ export const LeftNavItem = (props) => {
 	const linkProps = path
 		? external
 			? {
-					component: "a",
+					LinkComponent: "a",
 					href: path,
 					target: "_blank",
 			  }
 			: {
-					component: NextLink,
+					LinkComponent: Link,
 					href: path,
 			  }
 		: {};
 
 	return (
-		<li>
+		<li key={title}>
 			<ButtonBase
 				sx={{
 					alignItems: "center",
