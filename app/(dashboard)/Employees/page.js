@@ -208,7 +208,12 @@ export default function Page() {
 							spacing={4}
 						>
 							<Stack spacing={1}>
-								<Typography variant="h4">Customers</Typography>
+								<Typography
+									sx={{ color: "#04315A" }}
+									variant="h4"
+								>
+									Customers
+								</Typography>
 								<Stack
 									alignItems="center"
 									direction="row"
@@ -216,6 +221,10 @@ export default function Page() {
 								>
 									<Button
 										// color="inherit"
+										sx={{
+											color: "#bb4743",
+											fontSize: "18px",
+										}}
 										startIcon={
 											<SvgIcon fontSize="large">
 												<ArrowUpOnSquareIcon />
@@ -226,6 +235,10 @@ export default function Page() {
 									</Button>
 									<Button
 										// color="inherit"
+										sx={{
+											color: "#bb4743",
+											fontSize: "18px",
+										}}
 										startIcon={
 											<SvgIcon fontSize="small">
 												<ArrowDownOnSquareIcon />
@@ -238,12 +251,18 @@ export default function Page() {
 							</Stack>
 							<div>
 								<Button
+									sx={{
+										color: "#bb4743",
+										fontSize: "16px",
+										borderColor: "#bb4743",
+										marginTop: "23px",
+									}}
 									startIcon={
 										<SvgIcon fontSize="small">
 											<PlusIcon />
 										</SvgIcon>
 									}
-									// variant="contained"
+									variant="outlined"
 								>
 									Add
 								</Button>
