@@ -41,6 +41,12 @@ const AppLayer = ({ children }) => {
 	const handleCloseLeftNav = () => setLeftNav(dispatch, false);
 	const pathname = usePathname();
 
+	useEffect(() => {
+	const api = fetch("http://localhost:2800/api/users")
+	console.log('api', api)
+	}, [])
+	
+
 	const handlePathnameChange = useCallback(() => {
 		if (leftNav) {
 			// setLeftNav(false);
